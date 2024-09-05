@@ -3,7 +3,7 @@ import Errors from "./Errors";
 import type { DrafTarea } from "../types/type";
 
 export default function FormTarea() {
-    //el type de DraftTarea se utiliza para pasar los tipos
+    //el type de DraftTarea se utiliza para pasar los tipos generando un generic en el useForm
     const {register, handleSubmit, formState: {errors}} = useForm<DrafTarea>()
     
     const Onchange = (data: DrafTarea)=>{

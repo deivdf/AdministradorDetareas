@@ -3,7 +3,6 @@ import TareaList from "./components/TareaList"
 
 function App() {
 
-
   return (
     <>
       <div className="container mx-auto mt-20">
@@ -12,8 +11,8 @@ function App() {
             <span className="text-cyan-600"> de Tareas</span>
         </h1>
         <div className="mt-10 flex  flex-col md:flex-row">
-        <FormTarea/>
-        <TareaList />
+          <FormTarea/>
+          <TareaList />
         </div>
       </div>
     </>
