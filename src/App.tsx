@@ -1,6 +1,7 @@
 import FormTarea from "./components/FormTarea"
 import TareaList from "./components/TareaList"
-
+import {ToastContainer} from "react-toastify"
+import'react-toastify/dist/ReactToastify.css'
 function App() {
 
   return (
@@ -15,6 +16,7 @@ function App() {
           <TareaList />
         </div>
       </div>
+      <ToastContainer/>
     </>
   )
 }

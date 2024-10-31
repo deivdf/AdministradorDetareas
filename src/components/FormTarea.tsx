@@ -1,15 +1,34 @@
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify'
 import Errors from "./Errors";
 import type { DrafTarea } from "../types/type";
 import { useTareaStore } from "../store";
+import { useEffect } from "react";
 
 export default function FormTarea() {
+    const {addTarea, activeId, tareas, updateTarea} = useTareaStore()
     //el type de DraftTarea se utiliza para pasar los tipos generando un generic en el useForm
-    const {register, handleSubmit, formState: {errors}} = useForm<DrafTarea>()
-    const {addTarea} = useTareaStore()
-    
+    const {register, handleSubmit,reset,setValue, formState: {errors}} = useForm<DrafTarea>()
+    useEffect(() => {
+        if(activeId){
+            //el [0] para acceder a la posicion 0 del objeto
+            const activeTarea = tareas.filter(tarea => tarea.id === activeId)[0]
+            setValue('name', activeTarea.name)
+            setValue('categoria', activeTarea.categoria)
+            setValue('date', activeTarea.date)
+            setValue('tarea', activeTarea.tarea)
+            
+        }
+    },[activeId])
     const Onchange = (data: DrafTarea)=>{
-        addTarea(data)
+        if(activeId){
+            updateTarea(data)
+            toast.success('Tarea Actualizada Correctamente')
+        }else{
+            addTarea(data) 
+            toast.success('Tarea Registrada Correctamente')
+        }
+        reset();
     }
 
 
